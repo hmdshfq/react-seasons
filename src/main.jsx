@@ -8,7 +8,11 @@ class App extends React.Component{
     // super(props) is the reference to the constructor of parent class
     super(props)
 
-    // State object
+    /**
+     * State Object
+     * 
+     * This is the ONLY TIME we do direct assignment to this.state
+     */
     this.state = { lat: null }
 
     /**
@@ -19,7 +23,12 @@ class App extends React.Component{
      */
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
-        // setState to update state for rerendering the component
+        /**
+         * setState method
+         * 
+         * We always use setState to update the state. Whenever we use setState it will 
+         * rerender the component in the DOM
+         */
         this.setState({ lat: position.coords.latitude })
       },
       (error) => console.log(error)
