@@ -7,6 +7,9 @@ class App extends React.Component{
   constructor(props) {
     // super(props) is the reference to the constructor of parent class
     super(props)
+
+    // State object
+    this.state = { latitude: null }
   }
   // The only function that is required by React
   render() {
