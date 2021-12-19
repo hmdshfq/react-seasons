@@ -13,7 +13,7 @@ class App extends React.Component{
      * 
      * This is the ONLY TIME we do direct assignment to this.state
      */
-    this.state = { lat: null }
+    this.state = { lat: null, errorMessage: '' }
 
     /**
      * Getting geolocation takes time and the DOM is already displayed before
@@ -22,6 +22,10 @@ class App extends React.Component{
      * the DOM we use the state object.
      */
     window.navigator.geolocation.getCurrentPosition(
+      /**
+       * getCurrentPosition returns position object if it is successful
+       * it returns error object when it fails to fetch location 
+       */
       (position) => {
         /**
          * setState method
@@ -31,14 +35,26 @@ class App extends React.Component{
          */
         this.setState({ lat: position.coords.latitude })
       },
-      (error) => console.log(error)
+      (error) => {
+        this.setState({
+          /**
+           * We get the error.message from the error object that can be checked using
+           * console.log(error)
+           */ 
+          errorMessage: error.message
+        })
+      }
     )
   }
 
   // The only function that is required by React
   render() {
-    
-    return <div>Latitude: { this.state.lat }</div>
+    return (
+      <div>
+        Latitude: {this.state.lat}<br />
+        Error: {this.state.errorMessage}
+      </div>
+    )
   }
 }
 
