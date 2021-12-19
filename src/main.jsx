@@ -18,7 +18,10 @@ class App extends React.Component{
      * the DOM we use the state object.
      */
     window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
+      (position) => {
+        // setState to update state for rerendering the component
+        this.setState({ lat: position.coords.latitude })
+      },
       (error) => console.log(error)
     )
   }
