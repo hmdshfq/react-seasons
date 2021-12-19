@@ -10,9 +10,7 @@ class App extends React.Component{
 
     // State object
     this.state = { lat: null }
-  }
-  // The only function that is required by React
-  render() {
+
     /**
      * Getting geolocation takes time and the DOM is already displayed before
      * the location is loaded. To show the location on the page the DOM has to be
@@ -23,6 +21,11 @@ class App extends React.Component{
       (position) => console.log(position),
       (error) => console.log(error)
     )
+  }
+
+  // The only function that is required by React
+  render() {
+    
     return <div>Latitude: { this.state.lat }</div>
   }
 }
