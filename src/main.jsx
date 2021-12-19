@@ -9,20 +9,21 @@ class App extends React.Component{
     super(props)
 
     // State object
-    this.state = { latitude: null }
+    this.state = { lat: null }
   }
   // The only function that is required by React
   render() {
     /**
-     * Getting geolocation takes time, it is an async operation therefore 
-     * it requires the component to be rerendered to show the updated information.
-     * For rerendering the component we have to use state.
+     * Getting geolocation takes time and the DOM is already displayed before
+     * the location is loaded. To show the location on the page the DOM has to be
+     * rerendered with the updated the component with location information. To rerender
+     * the DOM we use the state object.
      */
     window.navigator.geolocation.getCurrentPosition(
       (position) => console.log(position),
       (error) => console.log(error)
     )
-    return <div>Latitude: </div>
+    return <div>Latitude: { this.state.lat }</div>
   }
 }
 
