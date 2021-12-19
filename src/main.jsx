@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import SeasonDisplay from './components/SeasonDisplay'
 
 class App extends React.Component{
+  // We define the constructor function so that we can use the state object
   constructor(props) {
     // super(props) is the reference to the constructor of parent class
     super(props)
