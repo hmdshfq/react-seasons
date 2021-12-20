@@ -12,6 +12,7 @@ class App extends React.Component{
      * State Object
      * 
      * This is the ONLY TIME we do direct assignment to this.state
+     * if (lat) and if (errorMessage) will return false which helps use later
      */
     this.state = { lat: null, errorMessage: '' }
 
@@ -33,7 +34,13 @@ class App extends React.Component{
          * We always use setState to update the state. Whenever we use setState it will 
          * rerender the component in the DOM
          */
-        this.setState({ lat: position.coords.latitude })
+        this.setState({
+          /**
+           * We get the position.coords.latitude from the position object that can be checked using
+           * console.log(position)
+           */ 
+          lat: position.coords.latitude
+        })
       },
       (error) => {
         this.setState({
