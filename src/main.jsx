@@ -18,7 +18,9 @@ class App extends React.Component {
     // }
 
     /**
-     * This is the alternate and much simpler method to the constructor
+     * Babel will transpile the statement below into the constructor call above.
+     * So we don't need to write the state inside the constructor. The following 
+     * statement will also work
      */
     state = { lat: null, errorMessage: '' };
 
