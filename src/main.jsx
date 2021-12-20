@@ -1,6 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import SeasonDisplay from './components/SeasonDisplay';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import SeasonDisplay from './components/SeasonDisplay'
+import Spinner from './components/Spinner'
 
 class App extends React.Component {
     // We define the constructor function so that we can use the state object
@@ -22,7 +23,7 @@ class App extends React.Component {
      * So we don't need to write the state inside the constructor. The following
      * statement will also work
      */
-    state = { lat: null, errorMessage: '' };
+    state = { lat: null, errorMessage: '' }
 
     /**
      * This lifecycle method runs after the screen is rendered for the first time
@@ -52,7 +53,7 @@ class App extends React.Component {
                      * console.log(position)
                      */
                     lat: position.coords.latitude,
-                });
+                })
             },
             error => {
                 this.setState({
@@ -61,9 +62,9 @@ class App extends React.Component {
                      * console.log(error)
                      */
                     errorMessage: error.message,
-                });
+                })
             }
-        );
+        )
     }
 
     /**
@@ -75,7 +76,7 @@ class App extends React.Component {
     render() {
         // Show error
         if (this.state.errorMessage && !this.state.lat) {
-            return <div>Error: {this.state.errorMessage}</div>;
+            return <div>Error: {this.state.errorMessage}</div>
         }
         // Show season
         if (!this.state.errorMessage && this.state.lat) {
@@ -84,10 +85,10 @@ class App extends React.Component {
              * the state is being passed into the SeasonDisplay as a prop
              */
 
-            return <SeasonDisplay lat={this.state.lat} />;
+            return <SeasonDisplay lat={this.state.lat} />
         }
         // Show loading
-        return <div>Loading ...</div>;
+        return <Spinner message="Please accept the location request" />
     }
 }
 
@@ -96,4 +97,4 @@ ReactDOM.render(
         <App />
     </React.StrictMode>,
     document.getElementById('root')
-);
+)
