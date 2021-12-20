@@ -4,18 +4,23 @@ import SeasonDisplay from './components/SeasonDisplay';
 
 class App extends React.Component {
     // We define the constructor function so that we can use the state object
-    constructor(props) {
-        // super(props) is the reference to the constructor of parent class
-        super(props);
+    // constructor(props) {
+    //     // super(props) is the reference to the constructor of parent class
+    //     super(props);
 
-        /**
-         * State Object
-         *
-         * This is the ONLY TIME we do direct assignment to this.state
-         * if (lat) and if (errorMessage) will return false which helps use later
-         */
-        this.state = { lat: null, errorMessage: '' };
-    }
+    //     /**
+    //      * State Object
+    //      *
+    //      * This is the ONLY TIME we do direct assignment to this.state
+    //      * if (lat) and if (errorMessage) will return false which helps use later
+    //      */
+    //     this.state = { lat: null, errorMessage: '' };
+    // }
+
+    /**
+     * This is the alternate and much simpler method to the constructor
+     */
+    state = { lat: null, errorMessage: '' };
 
     /**
      * This lifecycle method runs after the screen is rendered for the first time
