@@ -72,8 +72,10 @@ class App extends React.Component {
      */
     componentDidUpdate() {}
 
-    // The only function that is required by React
-    render() {
+    /**
+     * A helper function helps us to avoid conditionals inside the render method
+     */
+    renderContent() {
         // Show error
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: {this.state.errorMessage}</div>
@@ -88,7 +90,12 @@ class App extends React.Component {
             return <SeasonDisplay lat={this.state.lat} />
         }
         // Show loading
-        return <Spinner message="Please accept the location request" />
+        return <Spinner message='Please accept the location request' />
+    }
+
+    // The only function that is required by React
+    render() {
+        return <div>{this.renderContent()}</div>
     }
 }
 
