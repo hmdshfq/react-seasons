@@ -19,7 +19,7 @@ class App extends React.Component {
 
     /**
      * Babel will transpile the statement below into the constructor call above.
-     * So we don't need to write the state inside the constructor. The following 
+     * So we don't need to write the state inside the constructor. The following
      * statement will also work
      */
     state = { lat: null, errorMessage: '' };
@@ -73,14 +73,20 @@ class App extends React.Component {
 
     // The only function that is required by React
     render() {
+        // Show error
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: {this.state.errorMessage}</div>;
         }
-
+        // Show season
         if (!this.state.errorMessage && this.state.lat) {
-            return <div>Latitude: {this.state.lat}</div>;
-        }
+            /**
+             * When the state updates the SeasonDisplay component will also update because
+             * the state is being passed into the SeasonDisplay as a prop
+             */
 
+            return <SeasonDisplay lat={this.state.lat} />;
+        }
+        // Show loading
         return <div>Loading ...</div>;
     }
 }
