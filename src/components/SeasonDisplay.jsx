@@ -30,9 +30,9 @@ const getSeason = (lat, month) => {
     }
 }
 
-const SeasonDisplay = props => {
-    // props.lat gives the latitute and getMonth will give month to the function
-    const season = getSeason(props.lat, new Date().getMonth())
+const SeasonDisplay = ({ lat }) => {
+    // props.lat gives the latitude and getMonth will give month to the function
+    const season = getSeason(lat, new Date().getMonth())
     const { message, iconName } = seasonConfig[season]
 
     return (
